@@ -1,3 +1,4 @@
+#![doc(html_root_url = "https://docs.rs/asciiz/0.1.2")]
 /// asciiz create buffer and copy bytes ends with 0u8
 ///
 /// #Examples
