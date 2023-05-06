@@ -5,9 +5,9 @@
 // pub mod u8zz {
 
 pub struct CArgsBuf {
-  pub argc: usize,
-  pub argv: Vec<*mut i8>,
-  pub u8zz: Vec<u8>
+  argc: usize,
+  argv: Vec<*mut i8>,
+  u8zz: Vec<u8>
 }
 
 impl CArgsBuf {
