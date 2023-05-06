@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/asciiz/0.1.2")]
+#![doc(html_root_url = "https://docs.rs/asciiz/0.1.3")]
 /// asciiz create buffer and copy bytes ends with 0u8
 ///
 /// #Examples
@@ -57,7 +57,7 @@ mod tests {
     let s: usize = 5;
     let d: &mut Vec<u8> = &mut vec![255u8; s]; // fill not 0u8
     d[..].copy_from_slice(
-      unsafe { std::slice::from_raw_parts(cab.as_flat_ptr() as *const u8, s) });
+      unsafe { std::slice::from_raw_parts(cab.as_flat_u8ptr(), s) });
     assert_eq!(d[..(s - 1)], b"Z\0A\0".to_vec()); // check bytes
     assert_eq!(d[s - 1], 0u8); // end 0u8
   }

@@ -1,6 +1,6 @@
 [package]
 name = "asciiz"
-version = "0.1.2" # change with html_root_url in lib.rs
+version = "0.1.3" # change with html_root_url in lib.rs
 edition = "2021"
 authors = ["nomissbowling <nomissbowling@yahoo.co.jp>"]
 
@@ -9,7 +9,7 @@ keywords = ["asciiz", "u8z", "u8zz", "cstring", "utf-8"]
 categories = ["development-tools::ffi", "external-ffi-bindings"]
 license = "MIT"
 
-# documentation = "https://docs.rs/asciiz/latest/asciiz"
+documentation = "https://docs.rs/asciiz/"
 homepage = "https://crates.io/crates/asciiz"
 repository = "https://github.com/nomissbowling/asciiz"
 

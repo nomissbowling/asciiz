@@ -59,14 +59,22 @@ impl CArgsBuf {
     av as *const [*mut i8] as *const *mut i8
   }
 
-  pub fn as_flat_ptr_mut(&mut self) -> *mut i8 {
+  pub fn as_flat_u8ptr_mut(&mut self) -> *mut u8 {
     let p: &mut [u8] = &mut self.u8zz;
-    p as *mut [u8] as *mut u8 as *mut i8
+    p as *mut [u8] as *mut u8
+  }
+
+  pub fn as_flat_u8ptr(&self) -> *const u8 {
+    let p: &[u8] = &self.u8zz;
+    p as *const [u8] as *const u8
+  }
+
+  pub fn as_flat_ptr_mut(&mut self) -> *mut i8 {
+    self.as_flat_u8ptr_mut() as *mut i8
   }
 
   pub fn as_flat_ptr(&self) -> *const i8 {
-    let p: &[u8] = &self.u8zz;
-    p as *const [u8] as *const u8 as *const i8
+    self.as_flat_u8ptr() as *const i8
   }
 }
 
