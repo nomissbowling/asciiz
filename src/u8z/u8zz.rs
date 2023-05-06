@@ -7,7 +7,7 @@
 pub struct CArgsBuf {
   pub argc: usize,
   pub argv: Vec<*mut i8>,
-  u8zz: Vec<u8>
+  pub u8zz: Vec<u8>
 }
 
 impl CArgsBuf {
@@ -57,6 +57,16 @@ impl CArgsBuf {
   pub fn as_argv_ptr(&self) -> *const *mut i8 {
     let av: &[*mut i8] = &self.argv;
     av as *const [*mut i8] as *const *mut i8
+  }
+
+  pub fn as_flat_ptr_mut(&mut self) -> *mut i8 {
+    let p: &mut [u8] = &mut self.u8zz;
+    p as *mut [u8] as *mut u8 as *mut i8
+  }
+
+  pub fn as_flat_ptr(&self) -> *const i8 {
+    let p: &[u8] = &self.u8zz;
+    p as *const [u8] as *const u8 as *const i8
   }
 }
 

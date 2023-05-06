@@ -11,8 +11,11 @@ Examples
 use asciiz::u8z::U8zBuf;
 
 let mut m = U8zBuf::from_u8array(b"bytesarray"); // to keep lifetime
-let r = unsafe { c_function_requests_asciiz(m.as_i8p_mut()) };
+let r = unsafe { c_function_requires_asciiz_const(m.as_i8p()) };
+let s = unsafe { c_function_requires_asciiz_not_const(m.as_i8p_mut()) };
 ```
+
+- [ https://crates.io/crates/asciiz ]( https://crates.io/crates/asciiz )
 
 
 Samples

@@ -1,6 +1,6 @@
 [package]
 name = "asciiz"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["nomissbowling <nomissbowling@yahoo.co.jp>"]
 
@@ -9,8 +9,8 @@ keywords = ["asciiz", "u8z", "u8zz", "cstring", "utf-8"]
 categories = ["development-tools::ffi", "external-ffi-bindings"]
 license = "MIT"
 
-documentation = "https://github.com/nomissbowling/asciiz"
-homepage = "https://github.com/nomissbowling/asciiz"
+# documentation = "https://docs.rs/asciiz/latest/asciiz"
+homepage = "https://crates.io/crates/asciiz"
 repository = "https://github.com/nomissbowling/asciiz"
 
 readme = "README.md"

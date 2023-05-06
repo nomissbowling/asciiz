@@ -8,7 +8,8 @@
 /// let b = b"bytesarray";
 /// let mut m = U8zBuf::from_u8array(b);
 /// assert_eq!(m.as_u8p() as usize, m.as_u8p_mut() as usize);
-/// // let r = unsafe { c_function_requests_asciiz(m.as_i8p_mut()) };
+/// // let r = unsafe { c_function_requires_asciiz_const(m.as_i8p()) };
+/// // let s = unsafe { c_function_requires_asciiz_not_const(m.as_i8p_mut()) };
 ///
 /// ```
 
@@ -44,6 +45,19 @@ mod tests {
     d[..].copy_from_slice(
       unsafe { std::slice::from_raw_parts(m.as_u8p_mut(), s) });
     assert_eq!(d[..(s - 1)], b.to_vec()); // check bytes
+    assert_eq!(d[s - 1], 0u8); // end 0u8
+  }
+
+  #[test]
+  fn d_check_u8zz() {
+    let a: Vec<String> = vec!["Z".to_string(), "A".to_string()];
+    let cab = u8z::u8zz::CArgsBuf::from(&a);
+    assert_eq!(cab.as_argc(), 2);
+    let s: usize = 5;
+    let d: &mut Vec<u8> = &mut vec![255u8; s]; // fill not 0u8
+    d[..].copy_from_slice(
+      unsafe { std::slice::from_raw_parts(cab.as_flat_ptr() as *const u8, s) });
+    assert_eq!(d[..(s - 1)], b"Z\0A\0".to_vec()); // check bytes
     assert_eq!(d[s - 1], 0u8); // end 0u8
   }
 }
